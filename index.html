@@ -27,7 +27,32 @@
     </div>
   </header>
   <main class="container">
-    <div data-view="entry-form"></div>
+    <div data-view="entry-form">
+      <form class="code-journal form">
+        <h1>New Entry</h1>
+        <label for="user-name">Title</label>
+        <input
+          required
+          name="name"
+          type="text"
+          id="full-name">
+        <label for="phtot-url">Photo URL</label>
+        <input
+          required
+          name="name"
+          type="url"
+          id="photo-url">
+        <label for="user-message">Notes</label>
+        <textarea
+          required
+          rows="6"
+          name="message"
+          id="user-message"></textarea>
+        <div class="form-actions">
+          <button type="submit">SAVE</button>
+        </div>
+      </form>
+    </div>
     <div data-view="entries" class="hidden"></div>
   </main>
   <script src="js/data.js"></script>
