@@ -29,10 +29,10 @@ textarea {
   width: 100%;
 }
 
-form,
 button,
 input,
-textarea {
+textarea,
+.preview-image {
   border-radius: 0.25rem;
 }
 
@@ -71,4 +71,8 @@ button {
 
 .form-actions {
   text-align: end;
+}
+
+.preview-image {
+  width: 100%;
 }
