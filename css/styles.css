@@ -1,0 +1,19 @@
+header {
+  background-color: #562b81;
+  width: 100%;
+  height: 3rem;
+}
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.nav-title {
+  position: absolute;
+  top: 13px;
+  color: white;
+  font-family: "Proza Libre", sans-serif;
+  font-size: larger;
+}
