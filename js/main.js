@@ -13,8 +13,9 @@ $journalForm.addEventListener('submit', function (event) {
   info.url = $journalForm.elements.url.value;
   info.message = $journalForm.elements.message.value;
 
-  $journalForm.reset();
-  $previewImage.setAttribute('src', 'images/placeholder-image-square.jpg');
   info.entryId = data.nextEntryId;
   data.nextEntryId++;
+  data.entries.unshift(info);
+  $journalForm.reset();
+  $previewImage.setAttribute('src', 'images/placeholder-image-square.jpg');
 });
