@@ -22,6 +22,14 @@ header {
   font-size: larger;
 }
 
+.nav-link {
+  position: absolute;
+  top: 13px;
+  left: 140px;
+  color: white;
+  font-size: larger;
+}
+
 .n-entry {
   margin-top: 3.3rem;
 }
