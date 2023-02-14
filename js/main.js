@@ -75,5 +75,7 @@ function viewSwap(screenChange) {
     }
   }
 }
+$navLink.addEventListener('click', function (event) {
+  viewSwap('entries');
+});
 toggleNoEntries();
-$navLink.addEventListener('click', viewSwap);
