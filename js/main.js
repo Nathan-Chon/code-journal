@@ -19,3 +19,28 @@ $journalForm.addEventListener('submit', function (event) {
   $journalForm.reset();
   $previewImage.setAttribute('src', 'images/placeholder-image-square.jpg');
 });
+
+function renderEntry(entry) {
+  var $list = document.createElement('li');
+  var $row = document.createElement('div');
+  $row.setAttribute('class', 'row');
+  $list.appendChild($row);
+  var $columnHalf = document.createElement('div');
+  $columnHalf.setAttribute('class', 'column-half');
+  $row.appendChild($columnHalf);
+  var $newImage = document.createElement('img');
+  $newImage.setAttribute('class', 'new-image');
+  $columnHalf.appendChild($newImage);
+  var $columnHalf2 = document.createElement('div');
+  $columnHalf2.setAttribute('class', 'column-half');
+  $row.appendChild($columnHalf2);
+  var $newTitle = document.createElement('h2');
+  $newTitle.setAttribute('class', 'new-title');
+  $columnHalf2.appendChild($newTitle);
+  var $newP = document.createElement('p');
+  $newP.setAttribute('class', 'new-p');
+  $columnHalf2.appendChild($newP);
+  return $list;
+}
+
+renderEntry();
