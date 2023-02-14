@@ -30,6 +30,7 @@ function renderEntry(entry) {
   $row.appendChild($columnHalf);
   var $newImage = document.createElement('img');
   $newImage.setAttribute('class', 'new-image');
+  $newImage.setAttribute('src', entry.url);
   $columnHalf.appendChild($newImage);
   var $columnHalf2 = document.createElement('div');
   $columnHalf2.setAttribute('class', 'column-half');
@@ -37,10 +38,17 @@ function renderEntry(entry) {
   var $newTitle = document.createElement('h2');
   $newTitle.setAttribute('class', 'new-title');
   $columnHalf2.appendChild($newTitle);
+  $newTitle.textContent = entry.name;
   var $newP = document.createElement('p');
   $newP.setAttribute('class', 'new-p');
   $columnHalf2.appendChild($newP);
+  $newP.textContent = entry.message;
   return $list;
 }
+var $unorderedList = document.querySelector('.list');
 
-renderEntry();
+document.addEventListener('DOMContentLoaded', function (event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    $unorderedList.appendChild(renderEntry(data.entries[i]));
+  }
+});
