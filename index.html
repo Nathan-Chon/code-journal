@@ -14,14 +14,64 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
+  <header class="adjustment">
     <div class="container">
+      <div class="nav-bar">
+        <a class="nav-title">Code Journal</a>
+      </div>
     </div>
   </header>
   <main class="container">
-    <div data-view="entry-form"></div>
+    <div data-view="entry-form">
+      <form class="code-journal-form">
+        <div class="row">
+          <div class="column-full">
+            <h1 class="n-entry">New Entry</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-half">
+            <img class="preview-image" src="images/placeholder-image-square.jpg">
+          </div>
+          <div class="column-half">
+            <label for="user-name">Title</label>
+            <input
+            required
+            name="name"
+            type="text"
+            id="full-name">
+            <label for="phtot-url">Photo URL</label>
+            <input
+            required
+            name="url"
+            type="url"
+            id="photo-url">
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <label for="user-message">Notes</label>
+            <textarea
+            required
+            rows="6"
+            name="message"
+            id="user-message"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <div class="form-actions">
+              <button type="submit">SAVE</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
     <div data-view="entries" class="hidden"></div>
   </main>
   <script src="js/data.js"></script>
