@@ -98,3 +98,8 @@ h2 {
 .row {
   margin-bottom: 2rem;
 }
+
+.nothing-new {
+  margin-top: 5rem;
+  text-align: center;
+}
