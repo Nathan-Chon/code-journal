@@ -1,7 +1,13 @@
+* {
+  font-family: "Proza Libre", sans-serif;
+}
+
 header {
   background-color: #562b81;
   width: 100%;
   height: 3rem;
+  position: fixed;
+  z-index: 1;
 }
 
 .nav-bar {
@@ -14,12 +20,20 @@ header {
   position: absolute;
   top: 13px;
   color: white;
-  font-family: "Proza Libre", sans-serif;
   font-size: larger;
 }
 
+.nav-link {
+  position: absolute;
+  top: 13px;
+  left: 140px;
+  color: white;
+  font-size: larger;
+  cursor: pointer;
+}
+
 .n-entry {
-  font-family: "Proza Libre", sans-serif;
+  margin-top: 3.3rem;
 }
 
 label,
@@ -38,7 +52,6 @@ textarea,
 
 label {
   margin-bottom: 0.75rem;
-  font-family: "Proza Libre", sans-serif;
   font-weight: 800;
 }
 
@@ -48,7 +61,6 @@ textarea {
   margin-bottom: 1.5rem;
   border: 1px solid rgb(189 189 189);
   font-size: 1rem;
-  font-family: "Proza Libre", sans-serif;
   font-weight: 500;
 }
 
@@ -64,10 +76,8 @@ button {
   font-size: 1rem;
   border: none;
   color: white;
-  text-transform: uppercase;
   background-color: #562b81;
   cursor: pointer;
-  transition: background-color 0.15s ease;
 }
 
 .form-actions {
@@ -76,4 +86,39 @@ button {
 
 .preview-image {
   width: 100%;
+  border-radius: 5px;
+}
+
+.new-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.row {
+  margin-bottom: 2rem;
+}
+
+.nothing-new {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.new-button {
+  color: white;
+  background-color: #562b81;
+  padding: 5px 10px;
+  position: absolute;
+  right: 20px;
+  top: 4rem;
+  border-radius: 5px;
+  cursor: pointer;
 }
