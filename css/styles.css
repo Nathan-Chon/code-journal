@@ -111,3 +111,13 @@ h2 {
   margin-top: 5rem;
   text-align: center;
 }
+
+.new-button {
+  color: white;
+  background-color: #562b81;
+  padding: 5px 10px;
+  position: absolute;
+  right: 20px;
+  top: 4rem;
+  border-radius: 5px;
+}

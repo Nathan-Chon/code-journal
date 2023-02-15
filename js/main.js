@@ -18,6 +18,14 @@ $journalForm.addEventListener('submit', function (event) {
   data.entries.unshift(info);
   $journalForm.reset();
   $previewImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+
+  document.addEventListener('DOMContentLoaded', function (event) {
+    for (var i = 0; i < data.entries.length; i++) {
+      $unorderedList.appendChild(renderEntry(data.entries[i]));
+    }
+  });
+  toggleNoEntries();
+  viewSwap('entries');
 });
 
 function renderEntry(entry) {
@@ -51,15 +59,16 @@ document.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     $unorderedList.appendChild(renderEntry(data.entries[i]));
   }
+  viewSwap(data.view);
+  toggleNoEntries();
 });
 
-var $list = document.querySelector('.list');
-
+var $nothingNew = document.querySelector('.nothing-new');
 function toggleNoEntries() {
-  if ($list.length === 0) {
-    $list.setAttribute('class', 'nothing-new hidden');
+  if (data.entries.length === 0) {
+    $nothingNew.classList.remove('hidden');
   } else {
-    $list.setAttribute('class', 'nothing-new');
+    $nothingNew.classList.add('hidden');
   }
 }
 
@@ -78,4 +87,8 @@ function viewSwap(screenChange) {
 $navLink.addEventListener('click', function (event) {
   viewSwap('entries');
 });
-toggleNoEntries();
+
+var $newButton = document.querySelector('.new-button');
+$newButton.addEventListener('click', function (event) {
+  viewSwap('entry-form');
+});

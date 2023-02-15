@@ -7,10 +7,10 @@ var data = {
   nextEntryId: 1
 };
 
-// window.addEventListener('beforeunload', function (event) {
-//   var formJSON = JSON.stringify(data);
-//   localStorage.setItem('javascript-local-storage', formJSON);
-// });
+window.addEventListener('beforeunload', function (event) {
+  var formJSON = JSON.stringify(data);
+  localStorage.setItem('javascript-local-storage', formJSON);
+});
 
 var dataInJSON = localStorage.getItem('javascript-local-storage');
 if (dataInJSON !== null) {
