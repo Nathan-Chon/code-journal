@@ -7,6 +7,7 @@ header {
   width: 100%;
   height: 3rem;
   position: fixed;
+  z-index: 1;
 }
 
 .nav-bar {
@@ -28,6 +29,7 @@ header {
   left: 140px;
   color: white;
   font-size: larger;
+  cursor: pointer;
 }
 
 .n-entry {
@@ -50,7 +52,6 @@ textarea,
 
 label {
   margin-bottom: 0.75rem;
-  font-family: "Proza Libre", sans-serif;
   font-weight: 800;
 }
 
@@ -60,7 +61,6 @@ textarea {
   margin-bottom: 1.5rem;
   border: 1px solid rgb(189 189 189);
   font-size: 1rem;
-  font-family: "Proza Libre", sans-serif;
   font-weight: 500;
 }
 
@@ -76,10 +76,8 @@ button {
   font-size: 1rem;
   border: none;
   color: white;
-  text-transform: uppercase;
   background-color: #562b81;
   cursor: pointer;
-  transition: background-color 0.15s ease;
 }
 
 .form-actions {
@@ -88,10 +86,12 @@ button {
 
 .preview-image {
   width: 100%;
+  border-radius: 5px;
 }
 
 .new-image {
   width: 100%;
+  border-radius: 5px;
 }
 
 ul {
@@ -120,4 +120,5 @@ h2 {
   right: 20px;
   top: 4rem;
   border-radius: 5px;
+  cursor: pointer;
 }
