@@ -30,6 +30,7 @@ $journalForm.addEventListener('submit', function (event) {
 
 function renderEntry(entry) {
   var $list = document.createElement('li');
+  $list.setAttribute('data-entry-id', entry.entryId);
   var $row = document.createElement('div');
   $row.setAttribute('class', 'row');
   $list.appendChild($row);
@@ -47,6 +48,9 @@ function renderEntry(entry) {
   $newTitle.setAttribute('class', 'new-title');
   $columnHalf2.appendChild($newTitle);
   $newTitle.textContent = entry.name;
+  var $pencilIcon = document.createElement('i');
+  $pencilIcon.setAttribute('class', 'fa-solid fa-pen pen-adjustment');
+  $columnHalf2.appendChild($pencilIcon);
   var $newP = document.createElement('p');
   $newP.setAttribute('class', 'new-p');
   $columnHalf2.appendChild($newP);

@@ -122,3 +122,12 @@ h2 {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.pen-adjustment {
+  color: #562b81;
+  float: right;
+}
+
+.new-title {
+  float: left;
+}
