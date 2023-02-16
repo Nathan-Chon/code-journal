@@ -1,5 +1,6 @@
 var $photoUrl = document.querySelector('#photo-url');
 var $previewImage = document.querySelector('.preview-image');
+var $delete = document.querySelector('.delete');
 
 $photoUrl.addEventListener('input', function (event) {
   $previewImage.setAttribute('src', event.target.value);
@@ -12,7 +13,6 @@ $journalForm.addEventListener('submit', function (event) {
   info.name = $journalForm.elements.name.value;
   info.url = $journalForm.elements.url.value;
   info.message = $journalForm.elements.message.value;
-
   if (data.editing === null) {
     info.entryId = data.nextEntryId;
     data.nextEntryId++;
@@ -112,6 +112,11 @@ $navLink.addEventListener('click', function (event) {
 var $newButton = document.querySelector('.new-button');
 $newButton.addEventListener('click', function (event) {
   viewSwap('entry-form');
+  var $nEntry = document.querySelector('.n-entry');
+  var $editEntry = document.querySelector('.edit-entry');
+  $nEntry.setAttribute('class', 'n-entry');
+  $editEntry.setAttribute('class', 'edit-entry hidden');
+  $delete.classList.add('hidden');
 });
 
 $list.addEventListener('click', function (event) {
@@ -130,5 +135,6 @@ $list.addEventListener('click', function (event) {
     var $editEntry = document.querySelector('.edit-entry');
     $nEntry.setAttribute('class', 'n-entry hidden');
     $editEntry.setAttribute('class', ' edit-entry');
+    $delete.classList.remove('hidden');
   }
 });

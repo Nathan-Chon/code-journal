@@ -132,3 +132,12 @@ h2 {
   color: #562b81;
   float: right;
 }
+
+.delete {
+  border: none;
+  padding: 0;
+  color: red;
+  float: left;
+  background: none;
+  text-decoration: underline;
+}
