@@ -2,6 +2,10 @@
   font-family: "Proza Libre", sans-serif;
 }
 
+.row {
+  margin-bottom: 2rem;
+}
+
 header {
   background-color: #562b81;
   width: 100%;
@@ -51,6 +55,11 @@ textarea,
   border-radius: 0.25rem;
 }
 
+.preview-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
 label {
   margin-bottom: 0.75rem;
   font-weight: 800;
@@ -85,16 +94,6 @@ button {
   text-align: end;
 }
 
-.preview-image {
-  width: 100%;
-  border-radius: 5px;
-}
-
-.new-image {
-  width: 100%;
-  border-radius: 5px;
-}
-
 ul {
   list-style-type: none;
   padding-left: 0;
@@ -104,13 +103,9 @@ h2 {
   margin-top: 0;
 }
 
-.row {
-  margin-bottom: 2rem;
-}
-
-.nothing-new {
-  margin-top: 5rem;
-  text-align: center;
+.new-image {
+  width: 100%;
+  border-radius: 5px;
 }
 
 .new-button {
@@ -124,11 +119,16 @@ h2 {
   cursor: pointer;
 }
 
-.pen-adjustment {
-  color: #562b81;
-  float: right;
+.nothing-new {
+  margin-top: 5rem;
+  text-align: center;
 }
 
 .new-title {
   display: inline-block;
+}
+
+.pen-adjustment {
+  color: #562b81;
+  float: right;
 }
