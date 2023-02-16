@@ -2,6 +2,10 @@
   font-family: "Proza Libre", sans-serif;
 }
 
+.row {
+  margin-bottom: 2rem;
+}
+
 header {
   background-color: #562b81;
   width: 100%;
@@ -32,7 +36,8 @@ header {
   cursor: pointer;
 }
 
-.n-entry {
+.n-entry,
+.edit-entry {
   margin-top: 3.3rem;
 }
 
@@ -48,6 +53,11 @@ input,
 textarea,
 .preview-image {
   border-radius: 0.25rem;
+}
+
+.preview-image {
+  width: 100%;
+  border-radius: 5px;
 }
 
 label {
@@ -84,16 +94,6 @@ button {
   text-align: end;
 }
 
-.preview-image {
-  width: 100%;
-  border-radius: 5px;
-}
-
-.new-image {
-  width: 100%;
-  border-radius: 5px;
-}
-
 ul {
   list-style-type: none;
   padding-left: 0;
@@ -103,13 +103,9 @@ h2 {
   margin-top: 0;
 }
 
-.row {
-  margin-bottom: 2rem;
-}
-
-.nothing-new {
-  margin-top: 5rem;
-  text-align: center;
+.new-image {
+  width: 100%;
+  border-radius: 5px;
 }
 
 .new-button {
@@ -121,4 +117,18 @@ h2 {
   top: 4rem;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.nothing-new {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.new-title {
+  display: inline-block;
+}
+
+.pen-adjustment {
+  color: #562b81;
+  float: right;
 }
