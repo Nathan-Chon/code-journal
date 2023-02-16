@@ -1,6 +1,7 @@
 var $photoUrl = document.querySelector('#photo-url');
 var $previewImage = document.querySelector('.preview-image');
 var $delete = document.querySelector('.delete');
+var $cancel = document.querySelector('.cancel');
 
 $photoUrl.addEventListener('input', function (event) {
   $previewImage.setAttribute('src', event.target.value);
@@ -13,36 +14,47 @@ $journalForm.addEventListener('submit', function (event) {
   info.name = $journalForm.elements.name.value;
   info.url = $journalForm.elements.url.value;
   info.message = $journalForm.elements.message.value;
-  if (data.editing === null) {
-    info.entryId = data.nextEntryId;
-    data.nextEntryId++;
-    data.entries.unshift(info);
-    $list.prepend(renderEntry(data.entries[0]));
-  } else {
-    info.entryId = data.editing.entryId;
-    for (var i = 0; i < data.entries.length; i++) {
-      if (data.entries[i].entryId === info.entryId) {
-        data.entries[i] = info;
+  if (event.target.matches('.submit')) {
+    if (data.editing === null) {
+      info.entryId = data.nextEntryId;
+      data.nextEntryId++;
+      data.entries.unshift(info);
+      $list.prepend(renderEntry(data.entries[0]));
+    } else {
+      info.entryId = data.editing.entryId;
+
+      for (var i = 0; i < data.entries.length; i++) {
+        if (data.entries[i].entryId === info.entryId) {
+          data.entries[i] = info;
+        }
       }
-    }
-    var updatedLi = renderEntry(info);
-    const $lis = document.querySelectorAll('li');
+      var updatedLi = renderEntry(info);
+      const $lis = document.querySelectorAll('li');
 
-    for (var j = 0; j < $lis.length; j++) {
+      for (var j = 0; j < $lis.length; j++) {
 
-      if (Number($lis[j].getAttribute('data-entry-id')) === data.editing.entryId) {
-        var liToReplace = $lis[j];
+        if (Number($lis[j].getAttribute('data-entry-id')) === data.editing.entryId) {
+          var liToReplace = $lis[j];
+        }
       }
+
+      liToReplace.replaceWith(updatedLi);
+      data.editing = null;
     }
 
-    liToReplace.replaceWith(updatedLi);
-    data.editing = null;
+    toggleNoEntries();
+    viewSwap('entries');
+    $previewImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $journalForm.reset();
+  } else if (event.target.matches('.delete')) {
+    var $deleteFunction = document.querySelector('.delete-function');
+    $deleteFunction.classList.remove('hidden');
+    if (event.target.matches('.cancel')) {
+      $deleteFunction.classList.add('hidden');
+    } else if (event.target.matches('.confirm')) {
+      $deleteFunction.classList.add('hidden');
+    }
   }
-
-  toggleNoEntries();
-  viewSwap('entries');
-  $journalForm.reset();
-  $previewImage.setAttribute('src', 'images/placeholder-image-square.jpg');
 });
 
 function renderEntry(entry) {
@@ -137,4 +149,14 @@ $list.addEventListener('click', function (event) {
     $editEntry.setAttribute('class', ' edit-entry');
     $delete.classList.remove('hidden');
   }
+});
+
+$delete.addEventListener('click', function (event) {
+  var $deleteFunction = document.querySelector('.delete-function');
+  $deleteFunction.classList.remove('hidden');
+});
+
+$cancel.addEventListener('click', function (event) {
+  var $deleteFunction = document.querySelector('.delete-function');
+  $deleteFunction.classList.add('hidden');
 });
