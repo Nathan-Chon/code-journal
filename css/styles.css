@@ -32,7 +32,8 @@ header {
   cursor: pointer;
 }
 
-.n-entry {
+.n-entry,
+.edit-entry {
   margin-top: 3.3rem;
 }
 
@@ -129,5 +130,5 @@ h2 {
 }
 
 .new-title {
-  float: left;
+  display: inline-block;
 }

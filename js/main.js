@@ -13,19 +13,36 @@ $journalForm.addEventListener('submit', function (event) {
   info.url = $journalForm.elements.url.value;
   info.message = $journalForm.elements.message.value;
 
-  info.entryId = data.nextEntryId;
-  data.nextEntryId++;
-  data.entries.unshift(info);
-  $journalForm.reset();
-  $previewImage.setAttribute('src', 'images/placeholder-image-square.jpg');
-
-  document.addEventListener('DOMContentLoaded', function (event) {
+  if (data.editing === null) {
+    info.entryId = data.nextEntryId;
+    data.nextEntryId++;
+    data.entries.unshift(info);
+    $list.prepend(renderEntry(data.entries[0]));
+  } else {
+    info.entryId = data.editing.entryId;
     for (var i = 0; i < data.entries.length; i++) {
-      $unorderedList.appendChild(renderEntry(data.entries[i]));
+      if (data.entries[i].entryId === info.entryId) {
+        data.entries[i] = info;
+      }
     }
-  });
+    var updatedLi = renderEntry(info);
+    const $lis = document.querySelectorAll('li');
+
+    for (var j = 0; j < $lis.length; j++) {
+
+      if (Number($lis[j].getAttribute('data-entry-id')) === data.editing.entryId) {
+        var liToReplace = $lis[j];
+      }
+    }
+
+    liToReplace.replaceWith(updatedLi);
+    data.editing = null;
+  }
+
   toggleNoEntries();
   viewSwap('entries');
+  $journalForm.reset();
+  $previewImage.setAttribute('src', 'images/placeholder-image-square.jpg');
 });
 
 function renderEntry(entry) {
@@ -57,11 +74,11 @@ function renderEntry(entry) {
   $newP.textContent = entry.message;
   return $list;
 }
-var $unorderedList = document.querySelector('.list');
+var $list = document.querySelector('.list');
 
 document.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
-    $unorderedList.appendChild(renderEntry(data.entries[i]));
+    $list.appendChild(renderEntry(data.entries[i]));
   }
   viewSwap(data.view);
   toggleNoEntries();
@@ -95,4 +112,23 @@ $navLink.addEventListener('click', function (event) {
 var $newButton = document.querySelector('.new-button');
 $newButton.addEventListener('click', function (event) {
   viewSwap('entry-form');
+});
+
+$list.addEventListener('click', function (event) {
+  if (event.target.matches('.pen-adjustment')) {
+    viewSwap('entry-form');
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === Number(event.target.closest('li').getAttribute('data-entry-id'))) {
+        data.editing = data.entries[i];
+        document.getElementById('photo-url').setAttribute('value', data.editing.url);
+        document.getElementById('full-name').setAttribute('value', data.editing.name);
+        document.getElementById('user-message').value = data.editing.message;
+        $previewImage.src = data.editing.url;
+      }
+    }
+    var $nEntry = document.querySelector('.n-entry');
+    var $editEntry = document.querySelector('.edit-entry');
+    $nEntry.setAttribute('class', 'n-entry hidden');
+    $editEntry.setAttribute('class', ' edit-entry');
+  }
 });
