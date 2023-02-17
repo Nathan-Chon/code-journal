@@ -177,3 +177,15 @@ h2 {
   display: flex;
   justify-content: space-between;
 }
+
+.form-ending {
+  margin-top: -55px;
+  padding-bottom: 50px;
+  z-index: 1000;
+  position: relative;
+  width: fit-content;
+}
+
+.code-journal-form {
+  z-index: -1;
+}

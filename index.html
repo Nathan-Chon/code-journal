@@ -29,7 +29,7 @@
   </header>
   <main class="container">
     <div data-view="entry-form" class="view">
-      <form class="code-journal-form">
+      <form class="code-journal-form" id="form">
         <div class="row">
           <div class="column-full">
             <h1 class="n-entry">New Entry</h1>
@@ -68,7 +68,6 @@
         <div class="row">
           <div class="column-full">
             <div class="form-actions">
-              <button class="delete hidden">Delete Entry</button>
               <button class="submit" type="submit">SAVE</button>
             </div>
           </div>
@@ -87,6 +86,9 @@
           </div>
         </div>
       </form>
+      <div class="form-ending">
+        <button class="delete hidden">Delete Entry</button>
+      </div>
     </div>
     <div data-view="entries" class="view hidden">
       <div class="row">

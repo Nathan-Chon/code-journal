@@ -2,64 +2,55 @@ var $photoUrl = document.querySelector('#photo-url');
 var $previewImage = document.querySelector('.preview-image');
 var $delete = document.querySelector('.delete');
 var $cancel = document.querySelector('.cancel');
+var $confirm = document.querySelector('.confirm');
 
 $photoUrl.addEventListener('input', function (event) {
   $previewImage.setAttribute('src', event.target.value);
 });
 
 var $journalForm = document.querySelector('.code-journal-form');
-$journalForm.addEventListener('submit', function (event) {
+$journalForm.addEventListener('submit', saveButton);
+
+function saveButton(event) {
   event.preventDefault();
   var info = {};
   info.name = $journalForm.elements.name.value;
   info.url = $journalForm.elements.url.value;
   info.message = $journalForm.elements.message.value;
-  if (event.target.matches('.submit')) {
-    if (data.editing === null) {
-      info.entryId = data.nextEntryId;
-      data.nextEntryId++;
-      data.entries.unshift(info);
-      $list.prepend(renderEntry(data.entries[0]));
-    } else {
-      info.entryId = data.editing.entryId;
-
-      for (var i = 0; i < data.entries.length; i++) {
-        if (data.entries[i].entryId === info.entryId) {
-          data.entries[i] = info;
-        }
+  $journalForm.reset();
+  $previewImage.src = 'images/placeholder-image-square.jpg';
+  if (data.editing === null) {
+    info.entryId = data.nextEntryId;
+    data.nextEntryId++;
+    data.entries.unshift(info);
+    $list.prepend(renderEntry(data.entries[0]));
+  } else {
+    info.entryId = data.editing.entryId;
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === info.entryId) {
+        data.entries[i] = info;
       }
-      var updatedLi = renderEntry(info);
-      const $lis = document.querySelectorAll('li');
-
-      for (var j = 0; j < $lis.length; j++) {
-
-        if (Number($lis[j].getAttribute('data-entry-id')) === data.editing.entryId) {
-          var liToReplace = $lis[j];
-        }
+    }
+    var updatedLi = renderEntry(info);
+    const $lis = document.querySelectorAll('li');
+    for (var j = 0; j < $lis.length; j++) {
+      if (Number($lis[j].getAttribute('data-entry-id')) === data.editing.entryId) {
+        var liToReplace = $lis[j];
+        liToReplace.replaceWith(updatedLi);
       }
-
-      liToReplace.replaceWith(updatedLi);
-      data.editing = null;
     }
-
-    toggleNoEntries();
-    viewSwap('entries');
-    $previewImage.setAttribute('src', 'images/placeholder-image-square.jpg');
-    $journalForm.reset();
-  } else if (event.target.matches('.delete')) {
-    var $deleteFunction = document.querySelector('.delete-function');
-    $deleteFunction.classList.remove('hidden');
-    if (event.target.matches('.cancel')) {
-      $deleteFunction.classList.add('hidden');
-    } else if (event.target.matches('.confirm')) {
-      $deleteFunction.classList.add('hidden');
-    }
+    data.editing = null;
   }
-});
+  $journalForm.reset();
+  $previewImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+  toggleNoEntries();
+  viewSwap('entries');
+}
 
 function renderEntry(entry) {
   var $list = document.createElement('li');
   $list.setAttribute('data-entry-id', entry.entryId);
+  $list.setAttribute('class', 'li');
   var $row = document.createElement('div');
   $row.setAttribute('class', 'row');
   $list.appendChild($row);
@@ -151,12 +142,36 @@ $list.addEventListener('click', function (event) {
   }
 });
 
-$delete.addEventListener('click', function (event) {
+$delete.addEventListener('click', deleteOption);
+function deleteOption(event) {
   var $deleteFunction = document.querySelector('.delete-function');
   $deleteFunction.classList.remove('hidden');
-});
+}
 
 $cancel.addEventListener('click', function (event) {
   var $deleteFunction = document.querySelector('.delete-function');
   $deleteFunction.classList.add('hidden');
+});
+
+$confirm.addEventListener('click', function (event) {
+  var updatedArray = [];
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId !== data.editing.entryId) {
+      updatedArray.push(data.entries[i]);
+    }
+  }
+  data.entries = updatedArray;
+  var $li = document.querySelectorAll('.li');
+  for (var j = 0; j < $li.length; j++) {
+    if (Number($li[j].getAttribute('data-entry-id')) === data.editing.entryId) {
+      var removeLi = $li[j];
+    }
+  }
+  removeLi.remove();
+  var $deleteFunction = document.querySelector('.delete-function');
+  $deleteFunction.classList.add('hidden');
+  toggleNoEntries();
+  viewSwap('entries');
+  data.nextEntryId--;
+
 });
