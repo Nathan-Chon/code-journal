@@ -17,7 +17,6 @@ function saveButton(event) {
   info.name = $journalForm.elements.name.value;
   info.url = $journalForm.elements.url.value;
   info.message = $journalForm.elements.message.value;
-  $journalForm.reset();
   $previewImage.src = 'images/placeholder-image-square.jpg';
   if (data.editing === null) {
     info.entryId = data.nextEntryId;

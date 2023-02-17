@@ -41,6 +41,10 @@ header {
   margin-top: 3.3rem;
 }
 
+.code-journal-form {
+  z-index: -1;
+}
+
 label,
 input,
 textarea {
@@ -184,8 +188,4 @@ h2 {
   z-index: 1000;
   position: relative;
   width: fit-content;
-}
-
-.code-journal-form {
-  z-index: -1;
 }
