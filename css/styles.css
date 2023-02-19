@@ -41,6 +41,10 @@ header {
   margin-top: 3.3rem;
 }
 
+.code-journal-form {
+  z-index: -1;
+}
+
 label,
 input,
 textarea {
@@ -131,4 +135,57 @@ h2 {
 .pen-adjustment {
   color: #562b81;
   float: right;
+}
+
+.delete {
+  border: none;
+  padding: 0;
+  color: red;
+  float: left;
+  background: none;
+  text-decoration: underline;
+}
+
+.background-faded {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30rem;
+  height: 10rem;
+  margin-top: -5rem;
+  margin-left: -15rem;
+  box-shadow: 100px 100px 100px 100vw rgba(0, 0, 0, 0.5);
+  background-color: white;
+  border-radius: 5px;
+}
+
+.pop-up {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.cancel {
+  margin-top: 25px;
+  margin-left: 20px;
+  background-color: rgb(182, 182, 182);
+  color: black;
+}
+
+.confirm {
+  margin-top: 25px;
+  margin-right: 20px;
+  background-color: red;
+}
+
+.pop-up-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-ending {
+  margin-top: -55px;
+  padding-bottom: 50px;
+  z-index: 1000;
+  position: relative;
+  width: fit-content;
 }
